@@ -1,0 +1,26 @@
+group 'com.tw'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+
+project.ext {
+    configPath = "$rootProject.projectDir/config/"
+    dropwizardVersion = '0.9.2'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile group: 'io.dropwizard', name: 'dropwizard-core', version: dropwizardVersion
+}
+
+mainClassName = "com.tw.embeddoc.EmbedDocApplication"
+
+run {
+    args 'server', configPath + 'doc.yaml'
+}
