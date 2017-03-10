@@ -1,13 +1,13 @@
 package com.tw.embeddoc;
 
-import com.tw.embeddoc.docs.DocEvent;
+import com.tw.embeddoc.docs.DocEquipmentEvent;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class ImmutableDocStore<T extends DocEvent> {
+public class ImmutableDocStore<T extends DocEquipmentEvent> {
 	ArrayList<T> data = new ArrayList<>();
 
 	public T addEvent(T event) {

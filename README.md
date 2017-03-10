@@ -86,9 +86,9 @@ Feel free to carry on posting more data and adding fields.
 
 Now you're free to pipe your stored equipment definitions to a URL to evaluate for insurance purposes.  Try the following:
 
-    curl http://localhost:8080/equipment/doc/1 | curl -H "Content-Type: application/json" -X POST -d @- http://localhost:8080/insure-ship
+    curl http://localhost:8080/equipment/doc/1 | curl -H "Content-Type: application/json" -X POST -d @- http://localhost:8080/insure/ship
 
 Or if you'd prefer to insure a spacecraft:
 
-    curl http://localhost:8080/equipment/doc/1 | curl -H "Content-Type: application/json" -X POST -d @- http://localhost:8080/insure-spacecraft
+    curl http://localhost:8080/equipment/doc/1 | curl -H "Content-Type: application/json" -X POST -d @- http://localhost:8080/insure/spacecraft
 

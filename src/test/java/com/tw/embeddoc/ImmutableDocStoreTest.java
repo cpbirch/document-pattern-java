@@ -2,9 +2,7 @@ package com.tw.embeddoc;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tw.embeddoc.docs.DocEvent;
-import com.tw.embeddoc.events.EquipmentEvent;
-import com.tw.embeddoc.events.ResearchShipEquipmentEvent;
+import com.tw.embeddoc.docs.DocEquipmentEvent;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +10,7 @@ import org.junit.Test;
 import java.util.Collection;
 
 public class ImmutableDocStoreTest {
-	public ImmutableDocStore<DocEvent> data = null;
+	public ImmutableDocStore<DocEquipmentEvent> data = null;
 
 	ObjectMapper mapper = new ObjectMapper();
 
@@ -25,7 +23,7 @@ public class ImmutableDocStoreTest {
 	public void shouldAddAnEventToTheDataStore() throws Exception {
 		// given
 		JsonNode json = mapper.readTree("{\"k1\":\"v1\"}");
-		DocEvent e = DocEvent.createFromJson(json);
+		DocEquipmentEvent e = DocEquipmentEvent.createFromJson(json);
 		// when
 		data.addEvent(e);
 		// then
@@ -36,19 +34,19 @@ public class ImmutableDocStoreTest {
 	public void shouldReturnTwoEventsMatchingAnEquipmentID() throws Exception {
 		// given
 		JsonNode json = mapper.readTree("{\"equipmentId\":\"1\"}");
-		DocEvent e1 = DocEvent.createFromJson(json);
+		DocEquipmentEvent e1 = DocEquipmentEvent.createFromJson(json);
 
 		JsonNode json2 = mapper.readTree("{\"equipmentId\":\"2\"}");
-		DocEvent e2 = DocEvent.createFromJson(json2);
+		DocEquipmentEvent e2 = DocEquipmentEvent.createFromJson(json2);
 
 		JsonNode json3 = mapper.readTree("{\"equipmentId\":\"1\", \"name\":\"Boaty\"}");
-		DocEvent e3 = DocEvent.createFromJson(json3);
+		DocEquipmentEvent e3 = DocEquipmentEvent.createFromJson(json3);
 
 		data.addEvent(e1);
 		data.addEvent(e2);
 		data.addEvent(e3);
 		// when
-		Collection<DocEvent> list = data.findEventsById("1");
+		Collection<DocEquipmentEvent> list = data.findEventsById("1");
 		// then
 		Assert.assertTrue(list.size() == 2);
 	}
@@ -57,20 +55,20 @@ public class ImmutableDocStoreTest {
 	public void shouldMergeEventsFromTheDatastore() throws Exception {
 		// given
 		JsonNode json = mapper.readTree("{\"equipmentId\":\"1\", \"type\":\"Ship\"}\"}");
-		DocEvent e1 = DocEvent.createFromJson(json);
+		DocEquipmentEvent e1 = DocEquipmentEvent.createFromJson(json);
 
 		JsonNode json2 = mapper.readTree("{\"equipmentId\":\"1\", \"name\":\"Boaty\"}");
-		DocEvent e2 = DocEvent.createFromJson(json2);
+		DocEquipmentEvent e2 = DocEquipmentEvent.createFromJson(json2);
 
 		JsonNode json3 = mapper.readTree("{\"equipmentId\":\"1\", \"length\":\"129\"}");
-		DocEvent e3 = DocEvent.createFromJson(json3);
+		DocEquipmentEvent e3 = DocEquipmentEvent.createFromJson(json3);
 
 		data.addEvent(e1);
 		data.addEvent(e2);
 		data.addEvent(e3);
 
 		// when
-		DocEvent result = new DocEvent();
+		DocEquipmentEvent result = new DocEquipmentEvent();
 
 		data.aggregateEvents("1", result);
 		// then

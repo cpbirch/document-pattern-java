@@ -8,22 +8,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class DocEvent {
+public class DocEquipmentEvent {
 
 	public static ObjectMapper mapper = new ObjectMapper();
 	public static final MapType mapType = mapper.getTypeFactory().constructMapType(HashMap.class, String.class, String.class);
 
-	public static DocEvent createFromJson(JsonNode node) {
+	public static DocEquipmentEvent createFromJson(JsonNode node) {
 		Map<String, String> data = mapper.convertValue(node, mapType);
-		return new DocEvent(node, data);
+		return new DocEquipmentEvent(node, data);
 	}
 
 	private JsonNode node;
 	private Map<String, String> data = new HashMap<>();
 
-	public DocEvent() {}
+	public DocEquipmentEvent() {}
 
-	private DocEvent(JsonNode node, Map<String, String> data) {
+	private DocEquipmentEvent(JsonNode node, Map<String, String> data) {
 		this.node = node;
 		this.data = data;
 	}
@@ -36,9 +36,13 @@ public class DocEvent {
 		return data.get(fieldName);
 	}
 
+	public boolean contains (String fieldName) {
+		return data.containsKey(fieldName);
+	}
+
 	public Map<String, String> getAsMap() {return data; }
 
-	public <T extends DocEvent> T mergeInto(T target) {
+	public <T extends DocEquipmentEvent> T mergeInto(T target) {
 		target.getAsMap().putAll(this.data);
 		return target;
 	}
