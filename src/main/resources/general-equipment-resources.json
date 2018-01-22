@@ -1,0 +1,20 @@
+{
+  "properties": {
+
+    "equipmentId": {
+      "description": "the unique identifier for the asset, all events with the same ID will be aggregated.",
+      "title": "resource identifier.",
+      "type": "string"
+    },
+
+    "name": {
+      "description": "The name of the resource / equipment, optional.",
+      "title": "Name.",
+      "type": ["string", "null"]
+    }
+  },
+  "required": [
+    "equipmentId"
+  ],
+  "type": "object"
+}

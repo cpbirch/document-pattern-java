@@ -16,7 +16,15 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
+
     compile group: 'io.dropwizard', name: 'dropwizard-core', version: dropwizardVersion
+
+    // Json validation
+
+    compile group: 'com.github.fge', name: 'json-schema-validator', version: '2.2.6'
+    compile group: 'com.github.fge', name: 'jackson-coreutils', version: '1.8'
+    compile group: 'com.github.fge', name: 'json-schema-core', version: '1.2.5'
+
 }
 
 mainClassName = "com.tw.embeddoc.EmbedDocApplication"
