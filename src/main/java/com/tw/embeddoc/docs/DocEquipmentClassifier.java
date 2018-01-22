@@ -14,11 +14,11 @@ public class DocEquipmentClassifier {
 	private static List<DocClass> classifiers = new ArrayList<>();
 	static {
 		classifiers.add(
-				(equip) -> equip.contains("tonnage") ? Optional.of("This is a SHIP") : Optional.empty());
+				(equip) -> equip.contains("tonnage") ? Optional.of("SHIP") : Optional.empty());
 		classifiers.add(
-				(equip) -> equip.contains("helicopters") ? Optional.of("This is a RESEARCH VESSEL") : Optional.empty());
+				(equip) -> equip.contains("helicopters") ? Optional.of("RESEARCH VESSEL") : Optional.empty());
 		classifiers.add(
-				(equip) -> equip.contains("warpfactor") ? Optional.of("This is a SPACE CRAFT") : Optional.empty());
+				(equip) -> equip.contains("warpfactor") ? Optional.of("SPACE CRAFT") : Optional.empty());
 
 	}
 

@@ -1,7 +1,9 @@
 package com.tw.embeddoc;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.tw.embeddoc.docs.DocEquipmentClassifier;
 import com.tw.embeddoc.docs.DocEquipmentEvent;
+import com.tw.embeddoc.docs.InsuranceCertificate;
 
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -13,17 +15,19 @@ import javax.ws.rs.core.MediaType;
 public class InsureResource {
 
 	@POST
-	@Path("ship")
+	@Path("/ship")
 	public JsonNode insureShip(JsonNode json) {
 		DocEquipmentEvent e = DocEquipmentEvent.createFromJson(json);
-		return e.getAsJson();
+		InsuranceCertificate cert = new InsuranceCertificate(e, "SHIP");
+		return cert.getAsJson();
 	}
 
 	@POST
-	@Path("spacecraft")
+	@Path("/spacecraft")
 	public JsonNode insureSpacecraft(JsonNode json) {
 		DocEquipmentEvent e = DocEquipmentEvent.createFromJson(json);
-		return e.getAsJson();
+		InsuranceCertificate cert = new InsuranceCertificate(e, "SHIP");
+		return cert.getAsJson();
 	}
 
 

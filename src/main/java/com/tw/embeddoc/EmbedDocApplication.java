@@ -29,9 +29,11 @@ public class EmbedDocApplication extends Application<AppConfiguration> {
 		final EquipmentResource resource = new EquipmentResource();
 		final ShipEquipmentResource shipResource = new ShipEquipmentResource();
 		final GeneralEquipmentResource ger = new GeneralEquipmentResource();
+		final InsureResource ir = new InsureResource();
 		environment.jersey().register(resource);
 		environment.jersey().register(shipResource);
 		environment.jersey().register(ger);
+		environment.jersey().register(ir);
 		environment.getObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
 
