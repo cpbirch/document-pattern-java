@@ -3,7 +3,7 @@ An example java application to demonstrate how flexible "document APIs" are and 
 
 In financial institutions or in government, there is a common user-journey pattern:
 
-APPLY -> ASSESS -> PAY -> REPAY (replay is not usually a government concern)
+APPLY -> ASSESS -> PAY -> REPAY (financial institutions usually ask their customers to repay loans, repay is not usually a government concern)
 
 Consider the example of a mortgage, banks vary their terms and conditions over periods of time and have different demands on evidence, verification etc.  In a relational database, ORM and fine grained object world, the application form is closely coupled to storage and to APIs for evaluating mortgage applications.  This means a change in policy requires a change in all of the steps of the user-journey above.
 
